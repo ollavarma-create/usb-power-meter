@@ -159,7 +159,6 @@ USBMeter/
 
 MIT License
 
-Copyright (c) 2025 Jari Hiltunen (Codeberg: [hiltsu](https://codeberg.org/hiltsu))
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
