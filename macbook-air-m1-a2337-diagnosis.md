@@ -31,7 +31,7 @@ The logic board is type **820-02016**, and schematics and OpenBoardViewer images
 
 A MacBook can sometimes get stuck in a boot loop due to corrupt firmware. Restoring it with Apple Configurator 2 on another Mac did not succeed — the software gave little indication of why. Firmware restoration is also possible on Linux using [idevicerestore](https://github.com/libimobiledevice/idevicerestore), where the log gives more detail about what is going wrong. The restore finds the logic board (in DFU mode) but cannot start the restore process:
 
-```
+```text
 Command: idevicerestore -e UniversalMac_26.2_25C56_Restore.ipsw
 Found device in DFU mode
 ECID: 7055480287406366
@@ -122,7 +122,7 @@ The MacBook now negotiated 20V correctly with the power supply. However, current
 
 The restore now progresses further but still fails. The DFU mode has also changed:
 
-```
+```text
 sudo idevicerestore UniversalMac_26.2_25C56_Restore.ipsw
 idevicerestore 1.0.0-268-g74e3bd9 (libirecovery 1.3.1, libtatsu 1.0.5-3-g60a39f3)
 Found device in DFU mode
@@ -209,8 +209,6 @@ Thank you for reading!
 ## License
 
 MIT License
-
-Copyright (c) 2025 Jari Hiltunen (Codeberg: [hiltsu](https://codeberg.org/hiltsu))
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

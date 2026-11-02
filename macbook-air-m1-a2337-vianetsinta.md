@@ -34,6 +34,8 @@ LOGIC BOARD IN PLACE AND ALL CONNECTORS:
 
 Joskus MacBook voi jäädä boottilooppiin firmiksen sekoamisen vuoksi. Applen omalla Apple Configurator 2:lla ja toisella Mac:lla firmiksen palautus ei tähän laitteeseen onnistu. Softa ei kuitenkaan kerro paljoa syytä miksi ei onnistu. Firmiksen päivitys onnistuu myös mm. Linuxilla käyttämällä [idevicerestorea](https://github.com/libimobiledevice/idevicerestore) (Github linkki) ja logista näkee enemmän syitä miksi palautus ei onnistu. Restore löytää emolevyn (DFU moden), mutta ei pysty käynnistämään palautusta:
 
+```text
+
 - Command: idevicerestore -e UniversalMac_26.2_25C56_Restore.ipsw
 - Found device in DFU mode
 - ECID: 7055480287406366
@@ -71,6 +73,8 @@ Joskus MacBook voi jäädä boottilooppiin firmiksen sekoamisen vuoksi. Applen o
 - Uploading [==================================================] 100.0%
 - Device did not reconnect in DFU or recovery mode. Possibly invalid iBSS. Reset device and try again.
 - Unable to place device into recovery mode from DFU mode
+```
+
 
 ## Emolevyn jännitteitä mitatessa...
 
@@ -92,7 +96,7 @@ Diodi on niin pieni, ettei sitä meinaa silmillä nähdä. Tarvitset mikroskoopi
 
 Tilasin myös USB jännitemittarin, malliltaan J7-c ja bluetoothilla varustettuna. Yllätyksenä USB Bluetooth-donglet eivät välttämättä tunnista vanhoja bluetooth-modeja, joten jouduin hankkimaan myös ASUS USB-BT500 donglen Linuxi PC:lle. Läppärin bluetoothissa oli vanhat modet, mutta en tykkää koodata pienellä näytöllä.
 
-Tein USB mittaria varten sovelluksen, joka etsii bluetooth-laitteen UC96_BLE ja loggaa mitatut jännitteet, virran ja tehon CSV-tiedostoon ja tekee siitä graafin matplotlibin avulla. Kun MacBook yrittää käynnistyä, pysyy jännite 5V ja ajoittain näkyy noin 0.18 ampeerin virtapiikkejä. Missään vaiheessa ei näy 20 volttia. Koodin löydät [Codebergistä](https://codeberg.org/hiltsu/USB-Power-Meter).
+Tein USB mittaria varten sovelluksen, joka etsii bluetooth-laitteen UC96_BLE ja loggaa mitatut jännitteet, virran ja tehon CSV-tiedostoon ja tekee siitä graafin matplotlibin avulla. Kun MacBook yrittää käynnistyä, pysyy jännite 5V ja ajoittain näkyy noin 0.18 ampeerin virtapiikkejä. Missään vaiheessa ei näy 20 volttia. 
 
 Aluksi vaikutti siltä, että vika olisi SSD/NAND-piireissä (ja foorumeilla usein toistuvana vikana), mutta yleismittarilla mitattuna NAND-AWAKE-linjat vaikuttaisivat olevan tyypillisillä tasoilla:
 
@@ -130,6 +134,8 @@ MacBook neuvotteli nyt virtalähteen kanssa oikein 20V jännitteen. Virrankulutu
 ![20 volttia neuvoteltiin oikein](samples/20v.jpg)
 
 Palautus menee nyt myös pidemmälle, mutta ei silti onnistu:DFU tila on myös muuttunut:
+
+```text
 
 - sudo idevicerestore UniversalMac_26.2_25C56_Restore.ipsw 
 - idevicerestore 1.0.0-268-g74e3bd9 (libirecovery 1.3.1, libtatsu 1.0.5-3-g60a39f3)
@@ -253,6 +259,7 @@ Palautus menee nyt myös pidemmälle, mutta ei silti onnistu:DFU tila on myös m
 - Unable to send component 'RestoreDCP' to device.
 - Unable to send iBoot stage 1 components to device
 - Unable to place device into recovery mode from DFU mode
+```
 
 
 Eli lokin mukaan, seuraavat asiat epäonnistuvat:

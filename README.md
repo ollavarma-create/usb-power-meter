@@ -1,4 +1,4 @@
-# ⚡ USB Power Meter
+# USB Power Meter
 
 Graphical BLE-based USB power meter in Python. Connects wirelessly to
 J7-C / UC96 type USB testing modules and displays measurement data
